@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM with JS</title>
+  </head>
+  <body>
+    <h1 id="hid1">This is my page</h1>
+    <h2 id="hid2">This is second heading</h2>
+
+    <button id="bid1">Green </button>
+    <button id="bid2">Red</button>
+    <button id="bid3">Blue</button>
+    
+    <script>
+        document.getElementById("bid1").addEventListener("click", function(){
+            document.body.style.backgroundColor = "green";
+        });
+        document.getElementById("bid2").addEventListener("click", function(){
+            document.body.style.backgroundColor = "red";
+        });
+        document.getElementById("bid3").addEventListener("click", function(){
+            document.body.style.backgroundColor = "blue";
+        });
+    </script>
+  </body>
+</html>

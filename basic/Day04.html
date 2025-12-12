@@ -3,9 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>DOM with JS</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <h1 id="hid1">This is first heading</h1>
+    <h2 id="hid2">This is secong heading</h2>
+    <button onclick="fun()">click</button>
+    <button onclick="fun1()">Submit</button>
+    <button id="bid1">Save</button>
+    <script>
+        document.getElementById("bid1").addEventListener("click",function(){
+        document.getElementById("hid1").innerHTML="value changed"
+      });
+      function fun(){
+          document.getElementById("hid1").innerHTML="new value"
+      }
+      function fun1(){
+          document.getElementById("hid1").innerHTML="yup"
+      }
+      </script>
   </body>
 </html>
