@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM & Events Day 4</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    .box {
+      border: 2px solid black;
+      padding: 20px;
+      margin: 10px 0;
+      background: lightgray;
+    }
+    .dark {
+      background: #222;
+      color: white;
+    }
+  </style>
+
+
+</head>
+<body>
+
+<h3> Change Text</h3>
+<p id="text1">Hello</p>
+<button id="btnText">Click</button>
+
+<h3>Background Color</h3>
+<button id="red">Red</button>
+<button id="blue">Blue</button>
+<button id="green">Green</button>
+
+<h3> Image Switcher</h3>
+<img id="img1" src="https://tse2.mm.bing.net/th/id/OIP.h6lj7H-QfzG_F2TyXicHqwHaD4?pid=Api&P=0&h=180" width="200"><br><br>
+<button id="prev">Previous</button>
+<button id="next">Next</button>
+
+<h3>Show / Hide</h3>
+<p id="para">This is a paragraph</p>
+<button id="toggle">Toggle</button>
+
+<h3> Counter</h3>
+<button id="dec">-</button>
+<span id="count">0</span>
+<button id="inc">+</button>
+
+<h3>Create Element</h3>
+<button id="addBox">Add Box</button>
+
+<h3> Form Input Reader</h3>
+<input type="text" id="username" placeholder="Enter name">
+<button id="submit">Submit</button>
+<p id="output"></p>
+
+<h3> Todo List</h3>
+<input type="text" id="task">
+<button id="addTask">Add Task</button>
+<ul id="list"></ul>
+
+<h3>Attribute Change</h3>
+<img id="img2" src="https://tse3.mm.bing.net/th/id/OIP.3kgQEdo98yNzL-Sc716NwgHaGC?pid=Api&P=0&h=180"<br><br>
+<button id="small">Small</button>
+<button id="large">Large</button>
+
+<h3>Theme Switcher</h3>
+<button id="theme">Toggle Theme</button>
+
+<h3> Live Clock</h3>
+<p id="clock"></p>
+
+<h3> Random Quote</h3>
+<p id="quote"></p>
+<button id="quoteBtn">New Quote</button>
+
+<script>
+  // Task 1
+document.getElementById("btnText").addEventListener("click", () => {
+  document.getElementById("text1").innerText = "Welcome to JavaScript!";
+});
+
+// Task 2
+document.getElementById("red").addEventListener("click", () => {
+  document.body.style.backgroundColor = "red";
+});
+document.getElementById("blue").addEventListener("click", () => {
+  document.body.style.backgroundColor = "blue";
+});
+document.getElementById("green").addEventListener("click", () => {
+  document.body.style.backgroundColor = "green";
+});
+
+// Task 3
+let images = [
+  "https://tse2.mm.bing.net/th/id/OIP.h6lj7H-QfzG_F2TyXicHqwHaD4?pid=Api&P=0&h=180",
+  "https://tse4.mm.bing.net/th/id/OIP.RBtjTUnUeAB0ANg3jB_yQgHaE8?pid=Api&P=0&h=180"
+];
+let index = 0;
+
+document.getElementById("next").addEventListener("click", () => {
+  index = (index + 1) % images.length;
+  document.getElementById("img1").src = images[index];
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+  index = (index - 1 + images.length) % images.length;
+  document.getElementById("img1").src = images[index];
+});
+
+// Task 4
+document.getElementById("toggle").addEventListener("click", () => {
+  let p = document.getElementById("para");
+  p.style.display = p.style.display === "none" ? "block" : "none";
+});
+
+// Task 5
+let count = 0;
+
+document.getElementById("inc").addEventListener("click", () => {
+  count++;
+  document.getElementById("count").innerText = count;
+});
+
+document.getElementById("dec").addEventListener("click", () => {
+  if (count > 0) count--;
+  document.getElementById("count").innerText = count;
+});
+
+// Task 6
+document.getElementById("addBox").addEventListener("click", () => {
+  let div = document.createElement("div");
+  div.className = "box";
+  div.innerText = "New Box Created";
+  document.body.appendChild(div);
+});
+
+// Task 7
+document.getElementById("submit").addEventListener("click", () => {
+  let name = document.getElementById("username").value;
+  document.getElementById("output").innerText = "Hello " + name;
+});
+
+// Task 8
+document.getElementById("addTask").addEventListener("click", () => {
+  let task = document.getElementById("task").value;
+  let li = document.createElement("li");
+  li.innerText = task;
+  document.getElementById("list").appendChild(li);
+});
+
+// Task 9
+document.getElementById("small").addEventListener("click", () => {
+  document.getElementById("img2").setAttribute("width", "100");
+});
+
+document.getElementById("large").addEventListener("click", () => {
+  document.getElementById("img2").setAttribute("width", "250");
+});
+
+// Task 10
+document.getElementById("theme").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
+// Task 11
+setInterval(() => {
+  document.getElementById("clock").innerText =
+    new Date().toLocaleTimeString();
+}, 1000);
+
+// Task 12
+let quotes = [
+  "Practice makes perfect",
+  "JavaScript is powerful",
+  "Never stop learning",
+  "Code your future"
+];
+
+document.getElementById("quoteBtn").addEventListener("click", () => {
+  let r = Math.floor(Math.random() * quotes.length);
+  document.getElementById("quote").innerText = quotes[r];
+});
+
+</script>
+</body>
+</html>
