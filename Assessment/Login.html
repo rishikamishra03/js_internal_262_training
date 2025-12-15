@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Next Page</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="hid1">Welcome to Next Page Rishika</h1>
+<script>
+    let params=new URLSearchParams(window.location.search);
+    let c=params.get("fname");
+    document.getElementById("hid1").innerHTML= `Welcome ${c}`;
+</script>
+</body>
+</html>
